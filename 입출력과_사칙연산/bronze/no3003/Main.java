@@ -1,7 +1,5 @@
 package 입출력과_사칙연산.bronze.no3003;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -30,16 +28,5 @@ public class Main {
         System.out.print(d + " ");
         System.out.print(e + " ");
         System.out.print(f + " ");
-
-//        List<Integer> chess = List.of(1,1,2,2,2,8);
-//        List<Integer> answer = new ArrayList<>();
-//        List<Integer> inputUserNumber = new ArrayList<>();
-//        String piece = scanner.nextLine();
-//        for (int i = 0; i < piece.length(); i += 2) {
-//            inputUserNumber.add(piece.charAt(i) - '0');
-//        }
-//        for (int i = 0; i < chess.size(); i++) {
-//            System.out.print(chess.get(i) - inputUserNumber.get(i) + " ");
-//        }
     }
 }
