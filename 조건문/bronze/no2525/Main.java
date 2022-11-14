@@ -17,8 +17,7 @@ public class Main {
         } else if (m + time > 100) {
             h = h + (m + time) / 60;
             if (h > 24) {
-                h = -1;
-                h = h + (m + time) / 60;
+                h -= 24;
             }
             m = (m + time) % 60;
         } else if (m + time > 60 && m + time < 100) {
@@ -29,7 +28,6 @@ public class Main {
         }
         if (h == 24) {
             h = 0;
-            h = h + (m + time) / 60;
         }
         System.out.print(h + " " + m);
     }
