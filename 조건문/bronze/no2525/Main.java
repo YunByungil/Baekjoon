@@ -11,24 +11,12 @@ public class Main {
 
         int time = scanner.nextInt();
 
-        if (m + time == 60) {
-            h = h + 1;
-            m = 0;
-        } else if (m + time > 100) {
-            h = h + (m + time) / 60;
-            if (h > 24) {
-                h -= 24;
-            }
-            m = (m + time) % 60;
-        } else if (m + time > 60 && m + time < 100) {
-            h = h + 1;
-            m = m + time - 60;
-        } else if (m + time < 60) {
-            m = m + time;
+        int temp = (60 * h) + m + time; // 현재 시간을 분으로 바꾸는 작업 -> 시간에 60을 곱하면 분으로 표현할 수 있음
+        int hour = temp / 60;
+        if (hour >= 24) {
+            hour -= 24;
         }
-        if (h == 24) {
-            h = 0;
-        }
-        System.out.print(h + " " + m);
+        int minute = temp % 60;
+        System.out.println(hour + " " + minute);
     }
 }
