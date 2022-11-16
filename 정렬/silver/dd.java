@@ -1,2 +1,4 @@
-package 정렬.silver;public class dd {
+package 정렬.silver;
+
+public class dd {
 }

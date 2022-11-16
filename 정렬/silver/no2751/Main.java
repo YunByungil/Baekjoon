@@ -1,4 +1,4 @@
-package 정렬.silver;
+package 정렬.silver.no2751;
 
 import java.io.BufferedReader;
 import java.io.IOException;
