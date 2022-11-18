@@ -11,11 +11,33 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int a = 0;
         Set<Integer> set = new HashSet<>();
+        int count = 0;
+        int check = 0;
         int[] result = new int[10];
+//        for (int i = 0; i < 10; i++) {
+//            a = Integer.parseInt(br.readLine());
+//            set.add(a % 42);
+//        }
+//        System.out.println(set.size());
+//
         for (int i = 0; i < 10; i++) {
             a = Integer.parseInt(br.readLine());
-            set.add(a % 42);
+            result[i] = a % 42;
         }
-        System.out.println(set.size());
+        for (int i = 0; i < result.length - 1; i++) {
+            for (int j = i + 1; j < result.length; j++) {
+                if (result[i] == result[j]) {
+                    count = 0;
+                    break;
+                } else {
+                    count++;
+                }
+            }
+            if (count != 0) {
+                check++;
+                count = 0;
+            }
+        }
+        System.out.println(check + 1);
     }
 }
