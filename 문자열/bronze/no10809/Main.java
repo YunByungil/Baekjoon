@@ -7,22 +7,23 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        char[] alphabet = new char[26];
-        for (int i = 0; i < alphabet.length; i++) {
-            alphabet[i] = (char) ('a' + i);
+        int[] arr = new int[26];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = -1;
         }
+
         String s = br.readLine();
 
-        for (int i = 0; i < alphabet.length; i++) {
-            for (int j = 0; j < s.length(); j++) {
-                if (alphabet[i] == s.charAt(j)) {
-                    System.out.print(j + " ");
-                    break;
-                }
-                if (j == s.length() - 1) {
-                    System.out.print(-1 + " ");
-                }
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+
+            if (arr[ch -'a'] == -1) {
+                arr[ch - 'a'] = i;
             }
+        }
+
+        for (int i : arr) {
+            System.out.print(i + " ");
         }
     }
 }
