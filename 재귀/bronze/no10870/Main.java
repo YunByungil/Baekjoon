@@ -25,15 +25,15 @@ public class Main {
         if (n == 1) {
             return 1;
         }
-        if (n >= 2) {
-            count++;
-            number = x + y;
-            x = y;
-            y = number;
-            if (count == n) {
-                return number;
-            }
-        }
-        return getFibonacciNumbers(n);
+//        if (n >= 2) {
+//            count++;
+//            number = x + y;
+//            x = y;
+//            y = number;
+//            if (count == n) {
+//                return number;
+//            }
+//        }
+        return getFibonacciNumbers(n - 1) + getFibonacciNumbers(n - 2);
     }
 }
