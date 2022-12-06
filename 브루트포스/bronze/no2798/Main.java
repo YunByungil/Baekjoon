@@ -29,17 +29,29 @@ public class Main {
         1, 2, 4 조합
         2, 3, 4 조합
         */
+        System.out.println(search(n, m, card));
 
-        int max = 0;
+    }
+
+    public static int search(int n, int m, int[] card) {
+        int result = 0;
+
         for (int i = 0; i < card.length - 2; i++) {
             for (int j = i + 1; j < card.length - 1; j++) {
                 for (int k = j + 1; k < card.length; k++) {
-                    if (card[i] + card[j] + card[k] <= m) {
-                        max = Math.max(max, card[i] + card[j] + card[k]);
+                    int temp = card[i] + card[j] + card[k];
+
+                    if (temp == m) {
+                        return temp;
+                    }
+
+                    if (result < temp && temp < m) {
+                        result = temp;
                     }
                 }
             }
         }
-        System.out.println(max);
+
+        return result;
     }
 }
