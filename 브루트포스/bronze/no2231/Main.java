@@ -31,9 +31,9 @@ public class Main {
             check = arr[i];
             for (int j = 0; j < result.length(); j++) {
                 check += result.charAt(j) - '0';
-                if (check == n) {
-                    list.add(arr[i]);
-                }
+            }
+            if (check == n) {
+                list.add(arr[i]);
             }
         }
 
