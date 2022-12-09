@@ -1,17 +1,41 @@
 package 재귀.silver.no24060;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
 public class Main {
 
-    static int number = 8;
-    static int[] sorted = new int[8];
+    static int number;
+    static int[] sorted;
+    static int result = -1;
+    static int count = 0;
+    static int check = 0;
 
-    public static void main(String[] args) {
-        int[] arr = {7, 6, 5, 8, 3, 5, 9, 1};
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        count = Integer.parseInt(st.nextToken());
+        check = 0;
+        int[] arr = new int[n];
+        sorted = new int[n];
+        number = n;
+
+        st = new StringTokenizer(br.readLine());
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+
         mergeSort(arr, 0, number - 1);
 
-        for (int i = 0; i < number; i++) {
-            System.out.print(arr[i] + " ");
-        }
+//        for (int i = 0; i < n; i++) {
+//            System.out.print(arr[i] + " ");
+//        }
+        System.out.println(result);
     }
 
     public static void merge(int[] arr, int start, int middle, int end) {
@@ -41,11 +65,24 @@ public class Main {
                 k++;
             }
         }
+
+        i = start;
+        k = start;
+        while (i <= end) {
+            arr[i++] = sorted[k++];
+            check++;
+            if (count == check) {
+                result = arr[i - 1];
+                break;
+            }
+        }
+
+
         // 정렬된 배열 삽입
 
-        for (int t = start; t <= end; t++) {
-            arr[t] = sorted[t];
-        }
+//        for (int t = start; t <= end; t++) {
+//            arr[t] = sorted[t];
+//        }
     }
 
     static void mergeSort(int[] arr, int start, int end) {
