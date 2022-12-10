@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+public class reMain {
     static char[][] arr;
 
     public static void main(String[] args) throws IOException {
@@ -12,7 +12,7 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
 
         arr = new char[n][n];
-        getStar(0, 0, n, false);
+        star(0, 0, n, false);
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -20,10 +20,9 @@ public class Main {
             }
             System.out.println();
         }
-
     }
 
-    public static void getStar(int x, int y, int n, boolean blank) {
+    static void star(int x, int y, int n, boolean blank) {
         if (blank) {
             for (int i = x; i < x + n; i++) {
                 for (int j = y; j < y + n; j++) {
@@ -33,6 +32,7 @@ public class Main {
             return;
         }
 
+        // 종료 조건
         if (n == 1) {
             arr[x][y] = '*';
             return;
@@ -41,15 +41,17 @@ public class Main {
         int size = n / 3;
         int count = 0;
 
-        for (int i = x; i < x + n; i += size) {
-            for (int j = y; j < y + n; j += size) {
+        for (int i = x; i < x + n; i+=size) {
+            for (int j = y; j < y + n; j+=size) {
                 count++;
                 if (count == 5) {
-                    getStar(i, j, size, true);
+                    star(i, j, size, true);
                 } else {
-                    getStar(i, j, size, false);
+                    star(i, j, size, false);
                 }
             }
         }
+
+
     }
 }

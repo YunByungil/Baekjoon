@@ -32,9 +32,9 @@ public class Main {
 
         mergeSort(arr, 0, number - 1);
 
-//        for (int i = 0; i < n; i++) {
-//            System.out.print(arr[i] + " ");
-//        }
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
         System.out.println(result);
     }
 
@@ -80,9 +80,9 @@ public class Main {
 
         // 정렬된 배열 삽입
 
-//        for (int t = start; t <= end; t++) {
-//            arr[t] = sorted[t];
-//        }
+        for (int t = start; t <= end; t++) {
+            arr[t] = sorted[t];
+        }
     }
 
     static void mergeSort(int[] arr, int start, int end) {

@@ -45,6 +45,7 @@ public class Main {
             int row = startRow + i;
             for (int j = 0; j < 8; j++) {
                 int col = startCol + j;
+                System.out.println("row % 2 : " + row % 2);
                 if (board[row].charAt(col) != originalBoard[row % 2].charAt(j)) {
                     whiteSolution++;
                 }
