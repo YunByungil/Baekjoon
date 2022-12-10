@@ -10,7 +10,6 @@ class Solution {
 
         int[] answer = {boonja / d, boonmo / d};
 
-
         return answer;
     }
 
