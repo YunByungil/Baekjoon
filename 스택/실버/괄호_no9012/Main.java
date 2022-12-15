@@ -19,10 +19,10 @@ public class Main {
             input = br.readLine();
             vps(stack, input);
         }
-        
+
         // 2. 맨 위의 값과 내 값이 다르면 지우고, 같으면 push
         // 메서드
-        
+
         // 3. 출력
         System.out.println(sb);
 
