@@ -11,11 +11,9 @@ public class Main {
         // 1. input
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-//        StringTokenizer st = new StringTokenizer(br.readLine());
-//        int n = Integer.parseInt(st.nextToken()); // 1 ~ n까지 사람
-//        int k = Integer.parseInt(st.nextToken()) - 1; // 순서대로 K번째 사람을 제거한다.
-        int n = 7;
-        int k = 3;
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken()); // 1 ~ n까지 사람
+        int k = Integer.parseInt(st.nextToken()); // 순서대로 K번째 사람을 제거한다.
         sb.append("<");
 
         LinkedList<Integer> queue = new LinkedList<>();
@@ -24,7 +22,6 @@ public class Main {
         }
 
         while (queue.size() > 1) {
-            System.out.println(queue.size());
             for (int i = 0; i < k - 1; i++) {
                 int num = queue.poll();
                 queue.offer(num);
@@ -35,7 +32,5 @@ public class Main {
 
         sb.append(queue.pop()).append(">");
         System.out.println(sb);
-
-
     }
 }
