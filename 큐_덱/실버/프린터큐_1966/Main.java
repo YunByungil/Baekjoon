@@ -3,53 +3,59 @@ package 큐_덱.실버.프린터큐_1966;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class Main {
+    static LinkedList<Integer> queue; // 중요도
+    static LinkedList<Integer> list ; // 인덱스
+    static StringBuilder sb = new StringBuilder();
     public static void main(String[] args) throws IOException {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
         int n = Integer.parseInt(br.readLine());
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        LinkedList<Integer> queue = new LinkedList<>();
-        int a = Integer.parseInt(st.nextToken());
-        int b = Integer.parseInt(st.nextToken());
-        int num = 0;
-        for (int i = 1; i <= a; i++) {
-            queue.offer(i);
-        }
-        num = queue.get(b);
+        while (n != 0) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            queue = new LinkedList<>(); // 중요도
+            list = new LinkedList<>(); // 인덱스
+            int a = Integer.parseInt(st.nextToken()); // 문서의 갯수
+            int index = Integer.parseInt(st.nextToken()); // 인덱스
+            st = new StringTokenizer(br.readLine());
+            for (int i = 0; i < a; i++) {
+                queue.offer(Integer.parseInt(st.nextToken()));
+                list.offer(i);
+            }
 
-        st = new StringTokenizer(br.readLine());
+            getLine(index);
+            n--;
+        }
+        System.out.println(sb);
+
+
         // 문제 이해 ok
         // 중요도 순서로 어떻게 처리해애 되는지 해결 x
 
-        LinkedList<Integer> list = new LinkedList<>();
-        for (int i = 0; i < a; i++) {
-            int c = Integer.parseInt(st.nextToken());
-            list.offer(c);
-        }
+    }
+    public static void getLine(int index) {
+        int count = 1;
+        while (true) {
+            int max = Collections.max(queue);
+            int qNum = queue.poll();
+            int lNum = list.poll();
 
-        int count = 0;
-        for (int j = 0; j < list.size(); j++) {
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(0) < list.get(i)) {
-                    list.offer(list.pop());
-                    queue.offer(queue.pop());
+            if (qNum != max) {
+                queue.offer(qNum);
+                list.offer(lNum);
+            } else {
+                if (lNum == index) {
+                    sb.append(count).append("\n");
+                    break;
+                } else {
+                    count++;
                 }
             }
         }
-
-        for (Integer integer : queue) {
-            System.out.print("queue : " + integer + " ");
-        }
-
-        for (Integer integer : list) {
-            System.out.println(integer);
-        }
-
-        System.out.println(sb);
     }
 }
