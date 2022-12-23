@@ -19,25 +19,6 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine()); // 테스트케이스 갯수
 
-//        StringTokenizer st = new StringTokenizer(br.readLine(), ",");
-//        String str = br.readLine();
-//        System.out.println("str = " + str);
-//
-//        str = str.substring(1, str.length() - 1);
-//        System.out.println("str = " + str);
-//
-//        String[] arr = str.split(",");
-//
-//        for (String s : arr) {
-//            System.out.println("s = " + s);
-//        }
-//
-//        LinkedList<Integer> list = new LinkedList<>();
-//        for (String s : arr) {
-//            list.offer(Integer.parseInt(s));
-//        }
-//        System.out.println("list = " + list);
-
         for (int i = 0; i < n; i++) {
             queue = new LinkedList<>();
             rCount = 0;
@@ -61,9 +42,9 @@ public class Main {
         boolean result = true;
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) == 'R') {
-                playR();
+                rCount++;
             } else if (str.charAt(i) == 'D') {
-                result = playD();
+                result = checkReverseCount();
                 if (!result) {
                     break;
                 }
@@ -73,11 +54,19 @@ public class Main {
             if (queue.size() > 0) {
                 int size = queue.size();
                 sb.append("[");
-                for (int i = 0; i < size - 1; i++) {
-                    sb.append(queue.poll()).append(",");
+                if (rCount % 2 == 0) {
+                    for (int i = 0; i < size - 1; i++) {
+                        sb.append(queue.poll()).append(",");
+                    }
+                    sb.append(queue.poll());
+                    sb.append("]").append("\n");
+                } else {
+                    for (int i = 0; i < size - 1; i++) {
+                        sb.append(queue.pollLast()).append(",");
+                    }
+                    sb.append(queue.pollLast());
+                    sb.append("]").append("\n");
                 }
-                sb.append(queue.poll());
-                sb.append("]").append("\n");
             } else {
                 sb.append("[]").append("\n");
             }
@@ -86,16 +75,24 @@ public class Main {
         }
     }
 
-    public static void playR() {
-        int size = queue.size();
-        LinkedList<Integer> temp = new LinkedList<>();
-        for (int i = 0; i < size; i++) {
-            temp.offer(queue.pollLast());
+    public static boolean checkReverseCount() {
+        if (rCount % 2 == 0) {
+            return notReverseD();
+        } else {
+            return reverseD();
         }
-        queue = new LinkedList<>(temp);
     }
 
-    public static boolean playD() {
+    public static boolean reverseD() {
+        if (queue.isEmpty()) {
+            return false;
+        } else {
+            queue.pollLast();
+            return true;
+        }
+    }
+
+    public static boolean notReverseD() {
         if (queue.isEmpty()) {
             return false;
         } else {
