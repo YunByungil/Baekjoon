@@ -1,4 +1,4 @@
-package 투포인터.골드;
+package 투포인터.골드.두용액_2470;
 
 import java.io.BufferedReader;
 import java.io.IOException;
