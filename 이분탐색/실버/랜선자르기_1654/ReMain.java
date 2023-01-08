@@ -27,7 +27,7 @@ public class ReMain {
         int n = Integer.parseInt(st.nextToken()); // 필요한 랜선의 개수 n
 
         int[] arr = new int[k]; // 갖고 있는 랜선의 길이를 담는 배열
-        int max = 0; // 갖고 있는 랜선 중 가장 긴 랜선의 길이
+        long max = 0; // 갖고 있는 랜선 중 가장 긴 랜선의 길이
         for (int i = 0; i < k; i++) {
             st = new StringTokenizer(br.readLine());
             arr[i] = Integer.parseInt(st.nextToken());
@@ -35,27 +35,25 @@ public class ReMain {
         }
         max++; // 길이가 1일 때 0으로 나누는 것을 막기 위함이다.
 
-        int result = 0;
-        int min = 0;
-        int mid = 0;
-        int answer = 0;
+        long result = 0;
+        long min = 0;
+        long mid = 0;
+
         while (min < max) {
             result = 0;
             mid = (min + max) / 2;
             for (int i = 0; i < k; i++) {
-                result += arr[i] / mid;
-                System.out.println(result);
+                result += (arr[i] / mid);
             }
-            System.out.println("mid = " + mid);
+
             if (result < n) { // mid값이 크기 때문에 max 값 을 줄여야 한다.
                 max = mid;
             } else if (result == n) {
                 min = mid + 1;
-                answer = min;
             } else if (result > n) {
                 min = mid + 1;
             }
         }
-        System.out.println(answer - 1);
+        System.out.println(min - 1);
     }
 }
