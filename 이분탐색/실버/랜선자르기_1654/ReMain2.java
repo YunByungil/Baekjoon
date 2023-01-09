@@ -1,4 +1,4 @@
-package 이분탐색.실버.나무자르기_2805;
+package 이분탐색.실버.랜선자르기_1654;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,6 +51,6 @@ public class ReMain2 {
                 min = mid + 1;
             }
         }
-        System.out.println(min - 1);
+        System.out.println(min - 1); // 정답
     }
 }
