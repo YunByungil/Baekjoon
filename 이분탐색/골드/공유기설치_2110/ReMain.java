@@ -24,7 +24,7 @@ public class ReMain {
         Arrays.sort(arr);
 
         int start = 1;
-        int end = max;
+        int end = arr[n - 1] - arr[0] + 1;
 
         while (start < end) {
             int count = 0;
