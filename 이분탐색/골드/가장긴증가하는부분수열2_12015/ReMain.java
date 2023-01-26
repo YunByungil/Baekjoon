@@ -5,8 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main {
-
+public class ReMain {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -22,34 +21,41 @@ public class Main {
         ans[0] = arr[0];
         int size = 1;
 
-        for (int i = 1; i < n; i++) {
 
+        for (int i = 1; i < n; i++) {
             int key = arr[i];
 
             if (ans[i - 1] < key) {
                 size++;
                 ans[size - 1] = key;
-            }
-            else {
+
+            } else {
+
                 int start = 0;
                 int end = size;
+
                 while (start < end) {
                     int mid = (start + end) / 2;
 
-                    if(ans[mid] < key) {
+                    if (ans[mid] < key) {
                         start = mid + 1;
-                    }
-                    else {
+                    } else {
                         end = mid;
                     }
-
                 }
-
                 ans[start] = key;
-
             }
-
         }
-        System.out.println(size);
+
+        System.out.println("size = " + size);
+
+        for (int an : ans) {
+            System.out.println("an = " + an);
+        }
+
+        for (int i : arr) {
+            System.out.println("i = " + i);
+        }
+
     }
 }
