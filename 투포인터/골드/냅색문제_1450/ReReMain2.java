@@ -68,6 +68,7 @@ public class ReReMain2 {
             left.add(sum);
             return;
         }
+        System.out.println("index = " + index);
 
         leftBag(index + 1, sum);
         leftBag(index + 1, arr[index] + sum);
