@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main {
+public class ReMain {
     public static int re = 0;
     public static int now = 0;
     public static int max = 0;
@@ -25,10 +25,9 @@ public class Main {
         int n = Integer.parseInt(br.readLine()); // n개의 수
 
         arr = new int[n];
-        result = new int[n];
         cal = new char[n - 1];
 
-        visit = new boolean[n];
+        visit = new boolean[n - 1];
 
         StringTokenizer st = new StringTokenizer(br.readLine()); // n개의 수를 배열에 담기
         for (int i = 0; i < n; i++) {
@@ -43,36 +42,27 @@ public class Main {
 //            math[i] = check;
             save(i, check);
         }
-        dfs(n, 0);
+        dfs(n, arr[0], 1);
 
-        System.out.println("max = " + max);
-        System.out.println("min = " + min);
-
-        for (int i : arr) {
-            System.out.println("i = " + i);
-        }
+        System.out.println(max);
+        System.out.println(min);
 
     }
 
-    public static void dfs(int n, int depth) {
-        if (depth == n - 1) {
-            max = Math.max(max, re);
-            min = Math.min(min, re);
+    public static void dfs(int n, int sum, int depth) {
+        if (depth == n) {
+            max = Math.max(max, sum);
+            min = Math.min(min, sum);
             return;
         }
 
         for (int i = 0; i < n - 1; i++) {
             if (!visit[i]) {
                 visit[i] = true;
-                int back = arr[i + 1];
-//                System.out.println("i = " + i);
 
-                re = calculate(arr[depth], arr[depth + 1], cal[i]);
-                System.out.println("re = " + re);
+                int result = calculate(sum, arr[depth], cal[i]);
 
-                arr[depth + 1] = re;
-                dfs(n, depth + 1);
-                arr[depth + 1] = back;
+                dfs(n,result,  depth + 1);
 //                re = 0;
                 visit[i] = false;
             }
@@ -88,9 +78,6 @@ public class Main {
 
     public static int calculate(int num1, int num2, char cal) {
         int result = 0;
-        System.out.println("num1 = " + num1);
-        System.out.println("num2 = " + num2);
-        System.out.println("cal = " + cal);
         if (cal == '+') {
             result = num1 + num2;
         } else if (cal == '-') {
@@ -101,7 +88,6 @@ public class Main {
             result = num1 / num2;
         }
 
-        System.out.println("result = " + result);
         return result;
     }
 
