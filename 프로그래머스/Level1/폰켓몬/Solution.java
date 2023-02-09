@@ -1,4 +1,4 @@
-package 프로그래머스.Level1.해시;
+package 프로그래머스.Level1.폰켓몬;
 
 import java.util.HashMap;
 import java.util.Map;
