@@ -22,7 +22,7 @@ public class Main {
         if (n <= 0) {
             System.out.println(0);
         } else {
-            for (int i = n; i >= n/2; i--) {
+            for (int i = n; i >= n / 2; i--) {
                 int num = find(i);
                 if (max < num) {
                     max = num;
@@ -43,7 +43,7 @@ public class Main {
         int result = 0;
         int count = 0;
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < n; i++) {
             result = n - n2;
             if (result < 0) {
                 break;
@@ -62,7 +62,7 @@ public class Main {
         int result = 0;
         int count = 0;
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < n; i++) {
             result = n - n2;
             if (result < 0) {
                 break;
