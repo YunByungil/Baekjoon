@@ -64,7 +64,7 @@ public class Main {
             for (int j = 0; j < n; j++) {
                 if (arr[i][j] == 2) {
                     arr[i][j] = 11111;
-                    dfs(depth + 1, i + 1);
+                    dfs(depth + 1, i);
                     arr[i][j] = 2;
                 }
             }
