@@ -1,4 +1,4 @@
-package a처음부터_다시푸는_백준.브론즈.조건문.시험성적_9498;
+package a처음부터_다시푸는_백준.조건문.브론즈.시험성적_9498;
 
 import java.io.BufferedReader;
 import java.io.IOException;

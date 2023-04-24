@@ -1,4 +1,4 @@
-package a처음부터_다시푸는_백준.브론즈.조건문.두수비교하기_1330;
+package a처음부터_다시푸는_백준.조건문.브론즈.두수비교하기_1330;
 
 import java.io.BufferedReader;
 import java.io.IOException;

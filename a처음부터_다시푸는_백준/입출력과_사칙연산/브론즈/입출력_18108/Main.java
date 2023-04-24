@@ -1,4 +1,4 @@
-package a처음부터_다시푸는_백준.브론즈.입출력과_사칙연산.입출력_18108;
+package a처음부터_다시푸는_백준.입출력과_사칙연산.브론즈.입출력_18108;
 
 import java.io.BufferedReader;
 import java.io.IOException;
