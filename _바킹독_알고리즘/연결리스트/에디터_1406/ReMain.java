@@ -11,6 +11,7 @@ public class ReMain {
 
     public static Stack<Character> left = new Stack<>();
     public static Stack<Character> right = new Stack<>();
+    public static StringBuilder sb = new StringBuilder();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         str = br.readLine();
@@ -45,8 +46,9 @@ public class ReMain {
         }
 
         while (!right.isEmpty()) {
-            System.out.print(right.pop());
+            sb.append(right.pop());
         }
+        System.out.println(sb);
 
 
 
