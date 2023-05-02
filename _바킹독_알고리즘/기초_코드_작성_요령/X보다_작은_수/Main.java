@@ -1,4 +1,4 @@
-package _바킹독_알고리즘.기초_코드_작성_요령;
+package _바킹독_알고리즘.기초_코드_작성_요령.X보다_작은_수;
 
 import java.io.*;
 import java.util.*;
