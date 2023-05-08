@@ -3,9 +3,9 @@ package _바킹독_알고리즘.BFS.불_4179;
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class ReFactor {
     public static int r, c; // r: 미로 행의 개수, c: 열의 개수
-    public static int answer = Integer.MAX_VALUE;
+    public static int answer = 0;
     public static String[][] arr;
     public static boolean[][] visit;
     public static int[][] result;
@@ -43,47 +43,23 @@ public class Main {
             }
         }
 
-        bfs();
 
-        int check2 = -2;
-        // i = 0, i = r - 1
-        // i = 1, 2, 3, 4, 5, ... ,r - 2일 때는 j = 0, j = c - 1
-        // 나머지는 전부
-        for (int i = 0; i < r; i++) {
-            if (i == 0 || i == r - 1) {
-                for (int j = 0; j < c; j++) {
-                    if (result[i][j] != 0) {
-                        answer = Math.min(answer, result[i][j]);
-                        check2 = 0;
-                    }
-                }
-            }
-            else {
-                if (result[i][0] != 0 && result[i][c - 1] == 0) {
-                    check2 = 0;
-                    answer = Math.min(answer, result[i][0]);
-                } else if (result[i][0] == 0 && result[i][c - 1] != 0) {
-                    check2 = 0;
-                    answer = Math.min(answer, result[i][c - 1]);
-                } else if (result[i][0] != 0 && result[i][c - 1] != 0) {
-                    check2 = 0;
-                    int check = Math.min(result[i][c - 1], result[i][0]);
-                    answer = Math.min(answer, check);
-                }
-            }
-        }
-
-        if (check2 == -2) {
-            System.out.println("IMPOSSIBLE");
-        } else {
+        if (bfs()) {
             System.out.println(answer);
+        } else {
+            System.out.println("IMPOSSIBLE");
         }
 
-
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
 
     }
 
-    public static void bfs() {
+    public static boolean bfs() {
         while (!q.isEmpty()) {
             int[] nowLocation = q.poll();
             int nowY = nowLocation[0];
@@ -92,6 +68,13 @@ public class Main {
             for (int i = 0; i < 4; i++) {
                 int newY = nowY + row[i];
                 int newX = nowX + col[i];
+                if (arr[nowY][nowX].equals("J")) {
+                    if (newY < 0 || newY >= r || newX < 0 || newX >= c) {
+                        answer = result[nowY][nowX];
+                        return true;
+                    }
+                }
+
 
                 if (newY < 0 || newY >= r || newX < 0 || newX >= c) {
                     continue;
@@ -114,5 +97,8 @@ public class Main {
                 }
             }
         }
+
+
+        return false;
     }
 }
