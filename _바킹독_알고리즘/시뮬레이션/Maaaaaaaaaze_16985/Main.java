@@ -83,7 +83,7 @@ public class Main {
 
 
     public static void bfs() {
-        if (map[0][0][0] != 1 || map[4][4][4] != 1) {
+        if (map[0][0][0] != 1) {
             return;
         }
         boolean[][][] v = new boolean[h][n][m];
@@ -117,6 +117,9 @@ public class Main {
                     v[newZ][newX][newY] = true;
                     q.offer(new int[]{newZ, newX, newY});
                     result[newZ][newX][newY] = result[z][x][y] + 1;
+                    if (newZ == 4 && newX == 4 && newY == 4) {
+                        System.out.println("정답 구간");
+                    }
                 }
             }
             if (result[4][4][4] == 12) {
