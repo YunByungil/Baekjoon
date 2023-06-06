@@ -46,9 +46,10 @@ public class Main {
 //        }
 //        System.out.println("==================");
         dfs(0);
-        System.out.println("result : " + result[0][0][0]);
-        System.out.println("result : " + result[4][4][4]);
-        System.out.println("min = " + min);
+        if (min == Integer.MAX_VALUE) {
+            min = -1;
+        }
+        System.out.println(min);
 
     }
 
@@ -74,7 +75,7 @@ public class Main {
         for (int i = 0; i < h; i++) {
             if (!visit[i]) {
                 visit[i] = true;
-                map[i] = arr[i].clone();
+                map[depth] = arr[i].clone();
                 dfs(depth + 1);
                 visit[i] = false;
             }
@@ -97,9 +98,9 @@ public class Main {
             int x = point[1];
             int y = point[2];
 
-            if (z == 4 && x == 4 && y == 4) {
-                return;
-            }
+//            if (z == 4 && x == 4 && y == 4) {
+//                return;
+//            }
             for (int i = 0; i < 6; i++) {
                 int newZ = z + ver[i];
                 int newX = x + row[i];
@@ -118,19 +119,14 @@ public class Main {
                     q.offer(new int[]{newZ, newX, newY});
                     result[newZ][newX][newY] = result[z][x][y] + 1;
                     if (newZ == 4 && newX == 4 && newY == 4) {
-                        System.out.println("정답 구간");
+                        min = Math.min(min, result[4][4][4]);
                     }
                 }
             }
-            if (result[4][4][4] == 12) {
-                System.out.println(12);
-                System.exit(0);
-            }
-            if (result[4][4][4] != 0) {
-                System.out.println("y = " + y);
-                min = Math.min(min, result[4][4][4]);
-//                System.out.println("result[4][4][4] = " + result[4][4][4]);
-            }
+//            if (result[4][4][4] == 12) {
+//                System.out.println(12);
+////                System.exit(0);
+//            }
         }
     }
 
