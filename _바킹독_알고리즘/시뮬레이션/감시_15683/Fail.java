@@ -62,7 +62,6 @@ public class Fail {
         if (cctvNum == 1) {
             map = copyMap(arr);
             checkLeft(map, x, y);
-
             dfs(depth + 1, map);
 
             map = copyMap(arr);
@@ -128,7 +127,7 @@ public class Fail {
             dfs(depth + 1, map);
 
             map = copyMap(arr);
-            checkDown(map, x, y);
+            checkRight(map, x, y);
             checkLeft(map, x, y);
             checkUp(map, x, y);
             dfs(depth + 1, map);
